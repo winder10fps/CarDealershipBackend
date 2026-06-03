@@ -27,8 +27,12 @@ namespace CarDealershipBackend
 
             // Регистрация эндпоинтов
             new LoginEndpoint().Register(app, "/managers", "POST");
-            new AddCarEndpoint().Register(app, "/cars", "POST");
 
+            new AddCarEndpoint().Register(app, "/cars", "POST");
+            new GetAllCarsEndpoint().Register(app, "/cars");
+            new GetCarByIdEndpoint().Register(app, "/cars/{id}", "GET");
+            new DeleteCarEndpoint().Register(app, "/cars/{id}", "DELETE");
+            new UpdeteCarEndpoint().Register(app, "/cars/{id}");
 
             app.Run();
         }

@@ -1,7 +1,8 @@
 ﻿using CarDealershipBackend.Data;
 
-namespace CarDealershipBackend.Endpoints
+namespace CarDealershipBackend.Endpoints.Types
 {
+    // с телом
     public abstract class EndpointWithBody<TRequest>
     {
         protected abstract Task<IResult> ExecuteAsync(TRequest request, AppDbContext db);
@@ -26,7 +27,6 @@ namespace CarDealershipBackend.Endpoints
                     throw new ArgumentException($"Необрабатываемый HTTP метод: {httpMethod}");
             }
         }
-
 
         private async Task<IResult> Handle(TRequest request, AppDbContext db) => await ExecuteAsync(request, db);
     }

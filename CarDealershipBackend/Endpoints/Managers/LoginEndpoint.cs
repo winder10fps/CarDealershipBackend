@@ -1,5 +1,6 @@
 ﻿using CarDealershipBackend.Data;
 using CarDealershipBackend.DTOs.Manager;
+using CarDealershipBackend.Endpoints.Types;
 using Microsoft.EntityFrameworkCore;
 using BC = BCrypt.Net.BCrypt;
 
@@ -25,11 +26,9 @@ namespace CarDealershipBackend.Endpoints.Managers
                 return Results.Unauthorized();
             }
 
-            return Results.Ok(new
-            {
-                manager.Id,
-                manager.Login
-            });
+            var response = new ManagerResponseDTO(manager.Id, manager.Login);
+
+            return Results.Ok(response);
         }
     }
 }

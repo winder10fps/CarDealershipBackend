@@ -1,13 +1,12 @@
 ﻿namespace CarDealershipBackend.DTOs.Car
 {
-    public class CarResponseDTO
-    {
-            public int Id { get; set; }
-            public string? Brand { get; set; }
-            public string? Model { get; set; }
-            public int ReleaseYear { get; set; }
-            public string? Color { get; set; }
-            public decimal Price { get; set; }
-            public string? Condition { get; set; }
-    }
+    public record CarResponseDTO(
+        int Id,
+        string? Brand,
+        string? Model,
+        int ReleaseYear,
+        string? Color,
+        decimal Price,
+        string? Condition
+    );
 }
