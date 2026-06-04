@@ -1,5 +1,6 @@
 using CarDealershipBackend.Data;
 using CarDealershipBackend.Endpoints.Cars;
+using CarDealershipBackend.Endpoints.Clients;
 using CarDealershipBackend.Endpoints.Managers;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +34,12 @@ namespace CarDealershipBackend
             new GetCarByIdEndpoint().Register(app, "/cars/{id}", "GET");
             new DeleteCarEndpoint().Register(app, "/cars/{id}", "DELETE");
             new UpdeteCarEndpoint().Register(app, "/cars/{id}");
+
+            new AddClientEndpoint().Register(app, "/clients", "POST");
+            new DeleteClientEndpoint().Register(app, "/clients/{id}", "DELETE");
+            new GetAllClientsEndpoint().Register(app, "/clients");
+            new GetClientByIdEndpoint().Register(app, "/clients/{id}", "GET");
+            new UpdateClientEndpoint().Register(app, "/clients/{id}");
 
             app.Run();
         }
