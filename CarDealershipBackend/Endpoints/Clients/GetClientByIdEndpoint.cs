@@ -4,6 +4,9 @@ using CarDealershipBackend.Endpoints.Types;
 
 namespace CarDealershipBackend.Endpoints.Clients
 {
+    /// <summary>
+    /// Эндпоинт для получения клиента по ID
+    /// </summary>
     public class GetClientByIdEndpoint : EndpointWithId
     {
         protected override async Task<IResult> ExecuteAsync(int id, AppDbContext db)

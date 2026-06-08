@@ -5,6 +5,9 @@ using static CarDealershipBackend.Validation.Validation;
 
 namespace CarDealershipBackend.Endpoints.Cars
 {
+    /// <summary>
+    /// Эндпоинт для редактирования машины
+    /// </summary>
     public class UpdeteCarEndpoint : EndpointWithBodyAndId<CarRequestDTO>
     {
         protected override async Task<IResult> ExecuteAsync(int id, CarRequestDTO request, AppDbContext db)
@@ -22,8 +25,8 @@ namespace CarDealershipBackend.Endpoints.Cars
             {
                 return Results.BadRequest(new
                 {
-                    error = validateCar.ErrorCode,
-                    message = validateCar.ErrorMessage
+                    Error = validateCar.ErrorCode,
+                    Message = validateCar.ErrorMessage
                 });
             }
 

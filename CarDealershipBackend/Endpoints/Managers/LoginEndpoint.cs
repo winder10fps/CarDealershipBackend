@@ -6,6 +6,9 @@ using BC = BCrypt.Net.BCrypt;
 
 namespace CarDealershipBackend.Endpoints.Managers
 {
+    /// <summary>
+    /// Эндпоинт логина манеджера
+    /// </summary>
     public class LoginEndpoint: EndpointWithBody<LoginRequestDTO>
     {
         protected override async Task<IResult> ExecuteAsync(LoginRequestDTO request, AppDbContext db)

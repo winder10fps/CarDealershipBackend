@@ -2,32 +2,22 @@
 
 namespace CarDealershipBackend.Endpoints.Types
 {
-    // с телом
+    /// <summary>
+    /// Шаблонный класс эндпоинта, у которого есть только тело запроса (здесь для post запросов)
+    /// </summary>
+    /// <typeparam name="TRequest">DTO запроса</typeparam>
     public abstract class EndpointWithBody<TRequest>
     {
         protected abstract Task<IResult> ExecuteAsync(TRequest request, AppDbContext db);
 
-        public void Register(IEndpointRouteBuilder app, string path, string httpMethod)
+        /// <summary>
+        /// Регистрирует эндпоинт
+        /// </summary>
+        /// <param name="app">Приложение</param>
+        /// <param name="path">Путь</param>
+        public void Register(IEndpointRouteBuilder app, string path)
         {
-            switch (httpMethod.ToUpper())
-            {
-                case "GET":
-                    app.MapGet(path, Handle);
-                    break;
-                case "POST":
-                    app.MapPost(path, Handle);
-                    break;
-                case "PUT":
-                    app.MapPut(path, Handle);
-                    break;
-                case "DELETE":
-                    app.MapDelete(path, Handle);
-                    break;
-                default:
-                    throw new ArgumentException($"Необрабатываемый HTTP метод: {httpMethod}");
-            }
+            app.MapPost(path, async(TRequest request, AppDbContext db) => await ExecuteAsync(request, db));
         }
-
-        private async Task<IResult> Handle(TRequest request, AppDbContext db) => await ExecuteAsync(request, db);
     }
 }

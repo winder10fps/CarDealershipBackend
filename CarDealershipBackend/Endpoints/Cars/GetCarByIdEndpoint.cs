@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarDealershipBackend.Endpoints.Cars
 {
+    /// <summary>
+    /// Эндпоинт для получения машины по ID
+    /// </summary>
     public class GetCarByIdEndpoint : EndpointWithId
     {
         protected override async Task<IResult> ExecuteAsync(int id, AppDbContext db)

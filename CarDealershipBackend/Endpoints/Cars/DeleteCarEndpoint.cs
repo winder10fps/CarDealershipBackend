@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarDealershipBackend.Endpoints.Cars
 {
+    /// <summary>
+    /// Эндпоинт для удаления машины из базы
+    /// </summary>
     public class DeleteCarEndpoint : EndpointWithId
     {
         protected override async Task<IResult> ExecuteAsync(int id, AppDbContext db)
